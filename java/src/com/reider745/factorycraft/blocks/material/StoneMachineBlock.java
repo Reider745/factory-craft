@@ -1,31 +1,33 @@
 package com.reider745.factorycraft.blocks.material;
 
+import com.reider745.factorycraft.blocks.BlockRegistry;
 import com.reider745.factorycraft.items.ItemRegistry;
 import ru.koshakmine.icstd.block.Block;
-import ru.koshakmine.icstd.recipes.workbench.*;
-import ru.koshakmine.icstd.type.ItemID;
+import ru.koshakmine.icstd.recipes.workbench.ItemCraft;
+import ru.koshakmine.icstd.recipes.workbench.PatternData;
+import ru.koshakmine.icstd.recipes.workbench.ShapedRecipe;
+import ru.koshakmine.icstd.recipes.workbench.WorkbenchRecipeBase;
 import ru.koshakmine.icstd.type.block.BlockID;
 import ru.koshakmine.icstd.type.block.SoundType;
 import ru.koshakmine.icstd.type.tools.BlockMaterials;
 import ru.koshakmine.icstd.type.tools.ToolLevel;
 
-public class WoodenMachineBlock extends Block {
-    public static final String ID = "block_machine_wooden";
+public class StoneMachineBlock extends Block {
+    public static final String ID = "block_machine_stone";
     private static final WorkbenchRecipeBase RECIPE = FACTORY.add(new ShapedRecipe(new ItemCraft(ID, 0))
             .setPattern(new String[]{
                     "xax",
-                    "ici",
+                    "aba",
                     "xax"
             }, new PatternData[]{
-                    new PatternData('a', ItemRegistry.WOODEN_GEAR.getNumId()),
-                    new PatternData('i', ItemRegistry.STONE_GEAR.getNumId()),
-                    new PatternData('c', ItemID.DIAMOND),
-                    new PatternData('x', BlockID.PLANKS)
+                    new PatternData('a', ItemRegistry.STONE_GEAR.getNumId()),
+                    new PatternData('b', BlockRegistry.WOODEN_MACHINE_BLOCk.getNumId()),
+                    new PatternData('x', BlockID.COBBLESTONE)
             }));
 
     @Override
     public String getSoundType() {
-        return SoundType.WOOD;
+        return SoundType.STONE;
     }
 
     @Override
@@ -45,7 +47,7 @@ public class WoodenMachineBlock extends Block {
 
     @Override
     public String[] getTextures() {
-        return new String[]{getId()};
+        return new String[]{ID};
     }
 
     @Override
@@ -55,6 +57,6 @@ public class WoodenMachineBlock extends Block {
 
     @Override
     public String getName() {
-        return "blocks."+getId();
+        return "blocks."+ID;
     }
 }

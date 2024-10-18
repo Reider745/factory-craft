@@ -4,35 +4,40 @@ import ru.koshakmine.icstd.item.Item;
 import ru.koshakmine.icstd.recipes.workbench.ItemCraft;
 import ru.koshakmine.icstd.recipes.workbench.PatternData;
 import ru.koshakmine.icstd.recipes.workbench.ShapedRecipe;
-import ru.koshakmine.icstd.recipes.workbench.WorkbenchRecipeBase;
 import ru.koshakmine.icstd.type.CreativeCategory;
-import ru.koshakmine.icstd.type.ItemID;
 import ru.koshakmine.icstd.type.common.Texture;
 
-public class GearWoodItem extends Item {
-    public static final String ID = "gear_wood";
-    private static final WorkbenchRecipeBase RECIPE = FACTORY.add(new ShapedRecipe(new ItemCraft(ID, 0))
-            .setPattern(new String[]{
-                    "#a#",
-                    "a#a",
-                    "#a#"
-            }, new PatternData[]{
-                    new PatternData('a', ItemID.STICK)
-            }));
+public class GearItem extends Item {
+    private final String gear_id;
+    private final String[] pattern;
+    private final PatternData[] datas;
+
+    public GearItem(String id, String[] pattern, PatternData[] datas){
+        this.gear_id = id;
+        this.pattern = pattern;
+        this.datas = datas;
+    }
+
+    @Override
+    public void onInit() {
+        super.onInit();
+        FACTORY.add(new ShapedRecipe(new ItemCraft(gear_id, 0))
+                .setPattern(pattern, datas));
+    }
 
     @Override
     public Texture getTexture() {
-        return new Texture("gear_wood");
+        return new Texture(gear_id);
     }
 
     @Override
     public String getId() {
-        return ID;
+        return gear_id;
     }
 
     @Override
     public String getName() {
-        return "items.gear_wood";
+        return "items."+gear_id;
     }
 
     @Override

@@ -38,6 +38,10 @@
 		{
 			"source": "assets/lang",
 			"targetDir": "."
+		},
+		{
+			"source": "assets/windows",
+			"targetDir": "."
 		}
 	]
 }
