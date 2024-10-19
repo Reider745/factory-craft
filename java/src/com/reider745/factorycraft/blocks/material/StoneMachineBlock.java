@@ -3,10 +3,12 @@ package com.reider745.factorycraft.blocks.material;
 import com.reider745.factorycraft.blocks.BlockRegistry;
 import com.reider745.factorycraft.items.ItemRegistry;
 import ru.koshakmine.icstd.block.Block;
+import ru.koshakmine.icstd.item.ItemGroup;
 import ru.koshakmine.icstd.recipes.workbench.ItemCraft;
 import ru.koshakmine.icstd.recipes.workbench.PatternData;
 import ru.koshakmine.icstd.recipes.workbench.ShapedRecipe;
 import ru.koshakmine.icstd.recipes.workbench.WorkbenchRecipeBase;
+import ru.koshakmine.icstd.type.CreativeCategory;
 import ru.koshakmine.icstd.type.block.BlockID;
 import ru.koshakmine.icstd.type.block.SoundType;
 import ru.koshakmine.icstd.type.tools.BlockMaterials;
@@ -58,5 +60,15 @@ public class StoneMachineBlock extends Block {
     @Override
     public String getName() {
         return "blocks."+ID;
+    }
+
+    @Override
+    public CreativeCategory getCreativeCategory() {
+        return CreativeCategory.CONSTRUCTION;
+    }
+
+    @Override
+    public ItemGroup getCreativeItemGroup() {
+        return ItemRegistry.MATERIAL;
     }
 }

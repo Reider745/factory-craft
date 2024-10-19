@@ -1,6 +1,7 @@
 package com.reider745.factorycraft.api;
 
 import ru.koshakmine.icstd.block.BlockRotate;
+import ru.koshakmine.icstd.type.CreativeCategory;
 
 public abstract class MachineBlock extends BlockRotate {
 
@@ -27,5 +28,10 @@ public abstract class MachineBlock extends BlockRotate {
     @Override
     public String getName() {
         return "blocks."+getId();
+    }
+
+    @Override
+    public CreativeCategory getCreativeCategory() {
+        return CreativeCategory.CONSTRUCTION;
     }
 }

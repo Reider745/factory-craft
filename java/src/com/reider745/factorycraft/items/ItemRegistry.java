@@ -1,9 +1,12 @@
 package com.reider745.factorycraft.items;
 
+import com.reider745.factorycraft.items.groups.MaterialGroup;
+import com.reider745.factorycraft.items.groups.MechanicGroup;
 import com.reider745.factorycraft.items.material.FactoryBatteryItem;
 import com.reider745.factorycraft.items.material.GearItem;
 import com.reider745.factorycraft.items.material.WrenchItem;
 import ru.koshakmine.icstd.item.Item;
+import ru.koshakmine.icstd.item.ItemGroup;
 import ru.koshakmine.icstd.modloader.Mod;
 import ru.koshakmine.icstd.modloader.ObjectFactory;
 import ru.koshakmine.icstd.recipes.workbench.PatternData;
@@ -12,6 +15,9 @@ import ru.koshakmine.icstd.type.block.BlockID;
 
 public class ItemRegistry {
     private static final ObjectFactory FACTORY = Mod.getFactory();
+
+    public static final ItemGroup MATERIAL = FACTORY.addItemGroup(MaterialGroup::new);
+    public static final ItemGroup MECHANIC = FACTORY.addItemGroup(MechanicGroup::new);
 
     public static final Item WOODEN_GEAR = FACTORY.addItem(() -> new GearItem("gear_wood", new String[]{
       " a ",

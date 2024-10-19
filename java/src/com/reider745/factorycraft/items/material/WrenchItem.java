@@ -1,7 +1,10 @@
 package com.reider745.factorycraft.items.material;
 
 import com.reider745.factorycraft.api.ItemType;
+import com.reider745.factorycraft.items.ItemRegistry;
 import ru.koshakmine.icstd.item.Item;
+import ru.koshakmine.icstd.item.ItemGroup;
+import ru.koshakmine.icstd.type.CreativeCategory;
 import ru.koshakmine.icstd.type.common.Texture;
 
 public class WrenchItem extends Item {
@@ -23,5 +26,15 @@ public class WrenchItem extends Item {
     @Override
     public String getName() {
         return "items.factory_wrench";
+    }
+
+    @Override
+    public CreativeCategory getCreativeCategory() {
+        return CreativeCategory.TOOLS;
+    }
+
+    @Override
+    public ItemGroup getCreativeItemGroup() {
+        return ItemRegistry.MATERIAL;
     }
 }

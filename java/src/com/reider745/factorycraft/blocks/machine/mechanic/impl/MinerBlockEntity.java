@@ -26,20 +26,21 @@ public class MinerBlockEntity extends MechanicBlockEntity {
 
     @Override
     public void onLoad(JSONObject json) throws JSONException {
-        json.put("dx", digX);
-        json.put("dy", digY);
-        json.put("dz", digZ);
-        json.put("complete", complete);
+        digX = json.getInt("dx");
+        digY = json.getInt("dy");
+        digZ = json.getInt("dz");
+        complete = json.getBoolean("complete");
 
         super.onLoad(json);
     }
 
     @Override
     public void onSave(JSONObject json) throws JSONException {
-        digX = json.getInt("dx");
-        digY = json.getInt("dy");
-        digZ = json.getInt("dz");
-        complete = json.getBoolean("complete");
+        json.put("dx", digX);
+        json.put("dy", digY);
+        json.put("dz", digZ);
+        json.put("complete", complete);
+
 
         super.onSave(json);
     }

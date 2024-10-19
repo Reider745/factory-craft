@@ -1,6 +1,8 @@
 package com.reider745.factorycraft.items.material;
 
+import com.reider745.factorycraft.items.ItemRegistry;
 import ru.koshakmine.icstd.item.Item;
+import ru.koshakmine.icstd.item.ItemGroup;
 import ru.koshakmine.icstd.recipes.workbench.ItemCraft;
 import ru.koshakmine.icstd.recipes.workbench.PatternData;
 import ru.koshakmine.icstd.recipes.workbench.ShapedRecipe;
@@ -42,6 +44,11 @@ public class GearItem extends Item {
 
     @Override
     public CreativeCategory getCreativeCategory() {
-        return CreativeCategory.TOOLS;
+        return CreativeCategory.MATERIAL;
+    }
+
+    @Override
+    public ItemGroup getCreativeItemGroup() {
+        return ItemRegistry.MATERIAL;
     }
 }

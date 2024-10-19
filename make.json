@@ -7,6 +7,9 @@
 		"description": "description",
 		"clientOnly": false
 	},
+	"development": {
+		"comparingMode": "size"
+	},
 	"resources": [
 		{
 			"path": "assets/res",

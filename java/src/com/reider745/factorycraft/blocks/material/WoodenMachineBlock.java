@@ -2,7 +2,9 @@ package com.reider745.factorycraft.blocks.material;
 
 import com.reider745.factorycraft.items.ItemRegistry;
 import ru.koshakmine.icstd.block.Block;
+import ru.koshakmine.icstd.item.ItemGroup;
 import ru.koshakmine.icstd.recipes.workbench.*;
+import ru.koshakmine.icstd.type.CreativeCategory;
 import ru.koshakmine.icstd.type.ItemID;
 import ru.koshakmine.icstd.type.block.BlockID;
 import ru.koshakmine.icstd.type.block.SoundType;
@@ -56,5 +58,15 @@ public class WoodenMachineBlock extends Block {
     @Override
     public String getName() {
         return "blocks."+getId();
+    }
+
+    @Override
+    public CreativeCategory getCreativeCategory() {
+        return CreativeCategory.CONSTRUCTION;
+    }
+
+    @Override
+    public ItemGroup getCreativeItemGroup() {
+        return ItemRegistry.MATERIAL;
     }
 }
