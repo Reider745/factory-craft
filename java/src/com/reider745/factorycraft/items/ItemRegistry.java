@@ -23,27 +23,27 @@ public class ItemRegistry {
       " a ",
       "a a",
       " a "
-    }, new PatternData[]{new PatternData('a', ItemID.STICK)}));
+    }, new PatternData[]{new PatternData('a', ItemID.STICK)}, 0.25f));
     public static final Item STONE_GEAR = FACTORY.addItem(() -> new GearItem("gear_stone", new String[]{
             " a ",
             "aba",
             " a "
-    }, new PatternData[]{new PatternData('a', BlockID.STONE), new PatternData('b', WOODEN_GEAR.getNumId())}));
+    }, new PatternData[]{new PatternData('a', BlockID.STONE), new PatternData('b', WOODEN_GEAR.getNumId())}, .4f));
     public static final Item IRON_GEAR = FACTORY.addItem(() -> new GearItem("gear_iron", new String[]{
             " a ",
             "aba",
             " a "
-    }, new PatternData[]{new PatternData('a', ItemID.IRON_INGOT), new PatternData('b', STONE_GEAR.getNumId())}));
+    }, new PatternData[]{new PatternData('a', ItemID.IRON_INGOT), new PatternData('b', STONE_GEAR.getNumId())}, .8f));
     public static final Item GOLD_GEAR = FACTORY.addItem(() -> new GearItem("gear_gold", new String[]{
             " a ",
             "aba",
             " a "
-    }, new PatternData[]{new PatternData('a', ItemID.GOLD_INGOT), new PatternData('b', IRON_GEAR.getNumId())}));
+    }, new PatternData[]{new PatternData('a', ItemID.GOLD_INGOT), new PatternData('b', IRON_GEAR.getNumId())}, 1f));
     public static final Item DIAMOND_GEAR = FACTORY.addItem(() -> new GearItem("gear_diamond", new String[]{
             " a ",
             "aba",
             " a "
-    }, new PatternData[]{new PatternData('a', ItemID.DIAMOND), new PatternData('b', GOLD_GEAR.getNumId())}));
+    }, new PatternData[]{new PatternData('a', ItemID.DIAMOND), new PatternData('b', GOLD_GEAR.getNumId())}, 1.5f));
 
     public static final Item BATTERY = FACTORY.addItem(FactoryBatteryItem::new);
     public static final Item WRENCH = FACTORY.addItem(WrenchItem::new);

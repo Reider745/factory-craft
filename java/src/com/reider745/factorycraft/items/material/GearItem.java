@@ -1,5 +1,6 @@
 package com.reider745.factorycraft.items.material;
 
+import com.reider745.factorycraft.blocks.machine.mechanic.MechanicBlockEntity;
 import com.reider745.factorycraft.items.ItemRegistry;
 import ru.koshakmine.icstd.item.Item;
 import ru.koshakmine.icstd.item.ItemGroup;
@@ -13,16 +14,21 @@ public class GearItem extends Item {
     private final String gear_id;
     private final String[] pattern;
     private final PatternData[] datas;
+    private final float upgradeTime;
 
-    public GearItem(String id, String[] pattern, PatternData[] datas){
+    public GearItem(String id, String[] pattern, PatternData[] datas, float upgradeTime){
         this.gear_id = id;
         this.pattern = pattern;
         this.datas = datas;
+
+        this.upgradeTime = upgradeTime;
     }
 
     @Override
     public void onInit() {
         super.onInit();
+
+        MechanicBlockEntity.registerUpgrade(getNumId(), upgradeTime);
         FACTORY.add(new ShapedRecipe(new ItemCraft(gear_id, 0))
                 .setPattern(pattern, datas));
     }

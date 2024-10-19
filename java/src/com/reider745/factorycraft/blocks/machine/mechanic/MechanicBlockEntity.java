@@ -15,9 +15,9 @@ import ru.koshakmine.icstd.type.common.Position;
 import java.util.HashMap;
 
 public abstract class MechanicBlockEntity extends BlockEntityContainer implements ITickingBlockEntity {
-    private static final HashMap<Integer, Integer> upgrades = new HashMap<>();
+    private static final HashMap<Integer, Float> upgrades = new HashMap<>();
 
-    public static void registerUpgrade(int id, int upgradeTime){
+    public static void registerUpgrade(int id, float upgradeTime){
         upgrades.put(id, upgradeTime);
     }
 
@@ -26,6 +26,13 @@ public abstract class MechanicBlockEntity extends BlockEntityContainer implement
 
     public MechanicBlockEntity(String type, String localType, int id, Position position, Level level) {
         super(type, localType, id, position, level);
+    }
+
+    @Override
+    public void onInit() {
+        super.onInit();
+        networkData.putBoolean("active", active);
+        networkData.sendChanges();
     }
 
     @Override
@@ -46,14 +53,20 @@ public abstract class MechanicBlockEntity extends BlockEntityContainer implement
         for (int index = i; index <= size; index++) {
             final ItemStack slot = container.getSlot("slot"+prefix + index);
 
-            if ((slot.id == item.id && slot.data == item.data) || slot.id == 0) {
+            if(slot.id == 0){
+                container.setSlot("slot" + prefix+index, item);
+                return 0;
+            }
+
+            if (slot.id == item.id && slot.data == item.data) {
                 final int maxStack = NativeItem.getMaxStackForId(item.id, 0);
 
                 if (slot.count <= maxStack) {
                     int maxcount = maxStack - slot.count;
 
                     if(item.count <= maxcount){
-                        container.setSlot("slot" + prefix+index, item);
+                        slot.count += item.count;
+                        container.setSlot("slot" + prefix+index, slot);
                         return 0;
                     }
 
@@ -96,7 +109,7 @@ public abstract class MechanicBlockEntity extends BlockEntityContainer implement
             float modeTime = 1;
             for(int i = 1;i < 8;i++){
                 final ItemStack slot = container.getSlot("slotU"+i);
-                modeTime = Math.min(modeTime + upgrades.getOrDefault(slot.id, 0), 20);
+                modeTime = Math.min(modeTime + upgrades.getOrDefault(slot.id, 0f), 20);
             }
 
             progress += modeTime;
@@ -126,6 +139,8 @@ public abstract class MechanicBlockEntity extends BlockEntityContainer implement
     public String getScreenName(Position position, ItemStack stack, Player player) {
         if(ItemType.is(stack.id, "wrench")){
             active = !active;
+            networkData.putBoolean("active", active);
+            networkData.sendChanges();
             return null;
         }
         return "main";

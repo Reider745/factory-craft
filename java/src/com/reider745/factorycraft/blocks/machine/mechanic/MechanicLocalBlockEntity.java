@@ -28,7 +28,7 @@ public class MechanicLocalBlockEntity extends LocalBlockEntity implements ITicki
 
     @Override
     public void onTick() {
-        if(level.getTime() % 20 == 0) {
+        if(networkData.getBoolean("active", true) && level.getTime() % 20 == 0) {
             level.spawnParticle(REDSTONE, position.add(Math.random(), Math.random(), Math.random()));
         }
     }

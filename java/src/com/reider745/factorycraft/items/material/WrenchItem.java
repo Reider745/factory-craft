@@ -37,4 +37,9 @@ public class WrenchItem extends Item {
     public ItemGroup getCreativeItemGroup() {
         return ItemRegistry.MATERIAL;
     }
+
+    @Override
+    public int getMaxStack() {
+        return 1;
+    }
 }
