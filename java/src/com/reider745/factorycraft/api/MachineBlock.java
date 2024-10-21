@@ -1,9 +1,9 @@
 package com.reider745.factorycraft.api;
 
-import ru.koshakmine.icstd.block.BlockRotate;
+import ru.koshakmine.icstd.block.BlockRotatable;
 import ru.koshakmine.icstd.type.CreativeCategory;
 
-public abstract class MachineBlock extends BlockRotate {
+public abstract class MachineBlock extends BlockRotatable {
 
     @Override
     public abstract String getSoundType();
